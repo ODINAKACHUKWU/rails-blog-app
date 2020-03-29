@@ -1,23 +1,24 @@
-<h2 class="d-flex justify-content-center mt-5 pb-4">Sign Up</h2>
-<%= form_with model: @user, local: true do |form| %>
-  <div class="form-group form-icons">
-    <span class="fa fa-user"></span>
-    <%= form.text_field :first_name, class: "form-control", placeholder: "Firstname" %>
-  </div>
-  <div class="form-group form-icons">
-    <span class="fa fa-user"></span>
-    <%= form.text_field :last_name, class: "form-control", placeholder: "Lastname" %>
-  </div>
-  <div class="form-group form-icons">
-    <span class="fa fa-envelope"></span>
-    <%= form.email_field :email, class: "form-control", placeholder: "Email address" %>
-  </div>
-  <div class="form-group form-icons">
-    <span class="fa fa-lock"></span>
-    <%= form.password_field :password, class: "form-control", placeholder: "Password" %>
-  </div>
-  <%= form.submit "Sign Up", class: "form-control btn-primary" %>
-  <div class="text-left mt-3">
-    Already have an account? <a href="/session/signin" class="">Sign in</a>
-  </div>
-<% end %>
+<div class="signup-bg">
+    <div class="image-overlay">
+        <div class="container text-white px-5 pt-5">
+            <div class="logo-section">
+                <a href="/" class="d-flex justify-content-center"><%= image_tag("Logo2-01.png", :alt => "Logo", :class => "img-fluid") %></a>
+                <p class="text-center mt-2">Sign up for free to start sharing your inspiration and story on authors haven</p>
+            </div>
+            <div class="form-container rounded px-2 py-4 m-auto">
+                <div class="form mx-4">
+                    <%= render partial: "signup_form" %>
+                    <p class="mt-2">Already have an account? <a href="/login">Log in</a></p>
+                    <p class="d-flex justify-content-center py-3">Sign up with
+                        <a href="#">
+                            <%= image_tag("google.png", :alt => "Google icon", :class => "social-auth-icon ml-2") %>
+                        </a>
+                        <a href="#">
+                            <%= image_tag("facebook.png", :alt => "Facebook icon", :class => "social-auth-icon ml-2") %>
+                        </a> 
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

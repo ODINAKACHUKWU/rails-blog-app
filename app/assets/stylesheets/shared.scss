@@ -1,0 +1,111 @@
+@import "base";
+
+body,
+html {
+  height: 100%;
+  margin: 0;
+  width: 100%;
+}
+
+section {
+  padding-top: 5rem;
+}
+
+.main-section-top {
+  padding-top: 56px;
+}
+
+.social-auth-icon {
+  height: auto;
+  width: 30px;
+}
+
+.image-overlay {
+  background-color: $over-lay;
+  height: 100%;
+}
+
+.form-group {
+  margin-bottom: 0.5rem !important;
+}
+
+.form-control {
+  display: block;
+  width: 60%;
+  height: 46px;
+  padding: 6px 16px;
+  font-size: 14px;
+  background: $light-grey;
+  border-radius: 0 !important;
+}
+
+.form-control:focus {
+  @extend %focus;
+}
+
+.form-icons {
+  position: relative;
+
+  input {
+    text-indent: 30px;
+  }
+
+  .fa-user,
+  .fa-lock {
+    @include fa-alignment;
+    font-size: 18px;
+    top: 10px;
+  }
+
+  .fa-envelope {
+    @include fa-alignment;
+    font-size: 15px;
+    top: 12px;
+  }
+}
+
+.btn-orange {
+  background-color: $ah-orange !important;
+  border: none !important;
+  color: $white !important;
+  font-weight: 600 !important;
+
+  &:hover {
+    background-color: $btn-hover-orange !important;
+  }
+}
+
+.container {
+  .logo-section {
+    margin-top: 100px !important;
+  }
+}
+
+.form-container {
+  border: 1px solid $white;
+
+  .form {
+    a {
+      color: $white;
+
+      &:hover {
+        color: $ah-orange;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 576px) {
+  .container {
+    .form-container {
+      width: 35%;
+    }
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .form-container {
+    border: 0;
+  }
+}
