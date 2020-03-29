@@ -1,8 +1,13 @@
-<div className="container">
-    <h1 class="d-flex justify-content-center mt-5">
-        Welcome to Authors Haven App
-    </h1>
-    <h5 class="d-flex justify-content-center">
-        This application is developed to enable users to effectively manage their daily tasks and be more productive.
-    </h5>
+<%= render partial: 'hero_section' %>
+<div class="container">
+  <div class="row articles">
+    <div class="col-md-8">
+      <h4 class="d-flex mb-4 justify-content-center">Trending on Authors Haven</h4>
+      <% # [TODO]: Articles to be displayed here %>
+    </div>
+    <div class="col-md-4">
+      <h4 class="mb-2 pb-2 heading border-bottom">Highly Rated on Authors Haven</h4>
+      <% # [TODO]: Articles to be displayed here %>
+    </div>
+  </div>
 </div>

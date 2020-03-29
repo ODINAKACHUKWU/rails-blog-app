@@ -1,0 +1,5 @@
+@import "base";
+
+.signup-bg {
+  @include bg-image("signup-img.svg");
+}

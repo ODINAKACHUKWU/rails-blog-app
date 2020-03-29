@@ -1,0 +1,21 @@
+@import "base";
+
+.login-bg {
+  @include bg-image("login-img.svg");
+}
+
+.password-reset-link {
+  font-weight: 600;
+
+  a:hover {
+    text-decoration: none;
+    color: $ah-orange !important;
+  }
+}
+
+.logo-section {
+  img {
+    height: auto;
+    width: 180px;
+  }
+}

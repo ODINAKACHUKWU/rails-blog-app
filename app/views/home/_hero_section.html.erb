@@ -1,0 +1,22 @@
+<div class="main-section-top">
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 order-2 order-lg-1 jumbo-text">
+          <% if logged_in? %>
+            <h4>Recent Posts</h4>
+            <% # [TODO]: Articles to be displayed here %>                   
+          <% else %>
+            <h1 class="mt-4">Welcome to Authors Haven</h1>
+            <p class="lead">where like-minded authors share inspiration and innovation. If you have thoughts to share that you want to impact or influence people with - beyond just your friends, here is the place!</p>
+            <a class="btn btn-lg mt-3 jumbo-btn" href="/signup" role="button">Get started</a>
+          <% end %>
+        </div>
+        <div class="col-lg-6 order-1 order-lg-2">
+          <%= image_tag("jumbo-image.svg", :alt => "hero-image", :class => "img-fluid") %>
+        </div>
+      </div>
+      <hr class="my-4">
+    </div>
+  </section>
+</div>
