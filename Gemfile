@@ -5,8 +5,10 @@ ruby '2.4.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# Use postgres as the database for Active Record
+gem 'pg'
+# Use dotenv to keep secret keys safe
+gem 'dotenv-rails'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -25,7 +27,17 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
+
+# Use bootstrap for styling pages
+gem 'bootstrap', '~> 4.4.1'
+gem 'jquery-rails'
+
+# Use font awesome icons
+gem "font-awesome-rails"
+
+# Use toaster to display notifications
+gem 'toastr-rails'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

@@ -1,0 +1,33 @@
+@import "base";
+
+.navbar {
+  border-bottom: 0.5px solid $grey-border;
+}
+
+.navbar-nav {
+  @include nav-link-hover;
+
+  .fa-sign-in {
+    font-size: 19px;
+  }
+
+  .notification-bell {
+    width: 28px;
+    height: auto;
+    padding-top: 12px;
+  }
+}
+
+.nav {
+  @include nav-link-hover;
+}
+
+.navbar-brand {
+  img {
+    width: 150px;
+  }
+}
+
+.nav-btn {
+  font-weight: 600;
+}

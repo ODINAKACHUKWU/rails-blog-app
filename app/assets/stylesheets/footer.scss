@@ -1,0 +1,10 @@
+@import "base";
+
+.footer-container {
+  background-color: $ah-blue;
+
+  a:hover {
+    color: $ah-orange !important;
+    text-decoration: none;
+  }
+}

@@ -1,0 +1,35 @@
+@import "variables";
+
+@mixin fa-alignment {
+  position: absolute;
+  left: 15px;
+  color: $grey;
+}
+
+@mixin nav-link-hover {
+  .nav-item {
+    a:hover {
+      color: $ah-orange !important;
+    }
+  }
+}
+
+@mixin bg-image($image) {
+  background-image: url($image);
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@mixin orange-button {
+  background-color: $white;
+  border: 1px solid $ah-orange;
+  border-radius: 10px;
+  color: $ah-orange;
+
+  &:hover {
+    background-color: $ah-orange;
+    color: $white;
+  }
+}
