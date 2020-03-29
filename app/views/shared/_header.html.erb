@@ -1,0 +1,91 @@
+<% unless authentication_page? %>
+<div class="fixed-top shadow-sm">
+  <nav class="navbar navbar-light navbar-expand-lg bg-white">
+    <div class="container-fluid">
+      <div class="navbar-brand">
+        <%= image_tag("Logo1-01.png", :alt => "Logo") %>
+      </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto nav-btn">
+            <li class="nav-item mr-4 mt-2">
+              <% # [TODO] Add search bar here %>
+           </li>
+          <% if current_user.present? %>
+            <li class="nav-item">
+              <%= image_tag("bell.svg", :alt => "avatar", :class => "notification-bell mr-3") %>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link text-dark" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <% if user_avatar? %>
+                <%= image_tag(avatar, :alt => "avatar", :class => "rounded-circle z-depth-0", :height => "35") %>
+              <% else %>
+                <%= image_tag("avatar.svg", :alt => "avatar", :class => "rounded-circle z-depth-0", :height => "35") %>
+              <% end %>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="/">Home</a>
+                <a class="dropdown-item" href="#">Write a post</a>
+                <a class="dropdown-item" href="#">Posts</a>
+                <a class="dropdown-item" href="#">Profile</a>
+                <a class="dropdown-item" href="/signout">Sign out</a>
+              </div>
+            </li>
+          <% else %>
+            <li class="nav-item mr-3">
+              <a class="nav-link text-dark" href="/login"><i class="fa fa-sign-in mr-1"></i>SIGN IN</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-dark" href="/signup"><i class="fa fa-user-plus mr-1"></i>SIGN UP</a>
+            </li>
+          <% end %>
+          </ul>
+      </div>
+    </div>
+  </nav>
+  <% if home_page? %>
+    <div class="container-fluid bg-white">
+      <ul class="nav d-flex justify-content-md-around">
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="#">HOME</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="#">SCIENCE</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="#">HEALTH</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="#" >DESIGN</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="#" >POLITICS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="#" >POPULAR</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="#" >CULTURE</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="#" >ENTREPRENEURSHIP</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="#" >COMICS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="#" >FASHION</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="#" >SPORTS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="#" >MORE</a>
+        </li>
+      </ul>
+    </div>
+  <% end %>
+</div>
+<% end %>

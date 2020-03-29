@@ -1,0 +1,20 @@
+<% unless authentication_page? %>
+  <footer class="footer-container py-3 text-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7 order-2 order-md-1 text-center text-md-left">
+                <p class="mb-md-0">&copy; <%= Time.now.year %> Authors Haven Ltd. All rights reserved.
+                </p>
+            </div>
+            <div class="col-md-5 order-1 order-md-2 text-center text-md-right">
+                <p class="mb-0">
+                <a href="#" class="text-white">Help</a> | 
+                <a href="#" class="text-white">About</a> | 
+                <a href="#" class="text-white">Terms</a> | 
+                <a href="#" class="text-white">Careers</a>
+                </p>
+            </div>
+        </div>
+    </div>
+  </footer>
+<% end %>
