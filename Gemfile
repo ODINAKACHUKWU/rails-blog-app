@@ -36,6 +36,13 @@ gem 'jquery-rails'
 # Use font awesome icons
 gem "font-awesome-rails"
 
+# Use Quill text editor
+gem 'quilljs-rails'
+
+# Use Carrierwave and Cloudinary for image uploads
+gem 'carrierwave', '~>1.0'
+gem 'cloudinary'
+
 # Use toaster to display notifications
 gem 'toastr-rails'
 

@@ -2,7 +2,11 @@ class User < ApplicationRecord
   # encrypt password
   has_secure_password
 
+  # Mount Avatar uploader
+  mount_uploader :avatar_url, ImageUploader
+
   # Model associations
+  has_many :articles, dependent: :destroy
   
   # Validations
   validates :first_name, presence: true, length: { minimum: 2, too_short: "%{count} characters is the minimum allowed" }, on: :create

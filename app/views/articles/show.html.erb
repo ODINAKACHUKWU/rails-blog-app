@@ -1,0 +1,61 @@
+<section>
+  <div class="container px-5">
+    <div class="row">
+      <h1 class="article-title pt-4 pb-3">
+        <%= @article.title %>
+      </h1>
+    </div>
+    <div class='row d-flex mb-4'>
+      <div>
+        <% if author_avatar? %>
+          <%= image_tag(author_avatar, :alt => "avatar", :class => "rounded-circle z-depth-0", :height => "50") %>
+        <% else %>
+          <%= image_tag("avatar.svg", :alt => "avatar", :class => "rounded-circle z-depth-0", :height => "50") %>
+        <% end %>
+      </div>
+      <div class="ml-3">
+        <small class="author">
+          <%= author_full_name %>
+        </small>
+        <div>
+          <small>
+            <i class="text-muted">Published on</i> <%= format_date(@article.published_at) %>
+          </small>
+          <small class="text-muted">
+            <%= format_read_time(@article) %>
+          </small>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-5 d-flex justify-content-center">
+      <% if article_image? %>
+        <%= image_tag(article_image, :alt => image_description, :class => "img-fluid") %>
+      <% end %>
+    </div>
+    <div class="article-content px-5">
+      <%= sanitize @article.content %>
+    </div>
+    <hr class="my-4">
+    <div class='row d-flex mb-4'>
+      <div>
+        <% if author_avatar? %>
+          <%= image_tag(author_avatar, :alt => "avatar", :class => "rounded-circle z-depth-0", :height => "80") %>
+        <% else %>
+          <%= image_tag("avatar.svg", :alt => "avatar", :class => "rounded-circle z-depth-0", :height => "80") %>
+        <% end %>
+        </div>
+        <div class="ml-3">
+          <div class="text-muted">WRITTEN BY</div>
+          <div class="article-author">
+            <%= author_full_name %>
+          </div>
+          <p class="text-muted">
+            <% # [TODO]: Style when a biography has been updated %>
+            <% if biography? %>
+              <%= @article.author.biography %>
+            <% end %>
+          </p>
+        </div>
+    </div>
+  </div>
+</section>

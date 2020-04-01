@@ -1,0 +1,20 @@
+<%= form_with(model: @article, url: new_post_path, local: true) do |form| %>
+  <ul class="nav mb-3 d-flex justify-content-around justify-content-md-end mb-4">
+    <li class="ml-md-4 btn-nav">
+      <%= form.submit "Save as draft" %>
+    </li>
+    <li class="ml-md-4 btn-nav">
+      <%= form.submit "Publish" %>
+    </li>
+  </ul>
+  <p class="mb-1 font-italic">Upload an image in your story to make it interesting</p>
+  <div class="form-group mb-5" >
+    <%= form.file_field :image_url, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= form.text_field :title, class: "form-control", placeholder: "Title" %>
+  </div>
+  <div class="form-group mb-5 pb-5">
+    <%= form.text_area :content, class: "quill_container form-control", rows: 20, placeholder: "Share your story..." %>
+  </div> 
+<% end %>

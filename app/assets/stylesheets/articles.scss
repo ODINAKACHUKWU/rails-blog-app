@@ -1,0 +1,111 @@
+@import "base";
+
+.btn-nav {
+  input {
+    color: $ah-orange;
+    border: 1px solid $ah-orange;
+    border-radius: 5px;
+    line-height: auto !important;
+    padding: 0 15px;
+    background-color: $white;
+
+    &:hover {
+      background-color: $ah-orange;
+    }
+  }
+
+  input:hover {
+    color: $white;
+  }
+}
+
+.posts-header {
+  a {
+    color: $ah-orange;
+    border: 1px solid $ah-orange;
+    border-radius: 10px;
+    padding: 15px 20px;
+    background-color: $white;
+
+    &:hover {
+      color: $white;
+      background-color: $ah-orange;
+      text-decoration: none !important;
+    }
+  }
+}
+
+.article-content {
+  font-size: 1.3rem;
+  font-family: hel;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    font-size: 1.3rem !important;
+  }
+}
+
+.article-title {
+  font-size: 2.2rem;
+  font-family: hel;
+}
+
+.author {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.article-author {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.posts-tab {
+  padding-left: 0rem !important;
+}
+
+.posts-nav {
+  padding-left: 0rem !important;
+  padding-right: 0rem !important;
+
+  .current {
+    color: $ah-orange !important;
+  }
+}
+
+.post-card {
+  .title {
+    a {
+      color: $black !important;
+      font-size: 1.3rem !important;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  .content {
+    font-size: 1rem !important;
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
+      font-size: 1rem !important;
+    }
+  }
+
+  .draft-link {
+    a:hover {
+      color: $ah-orange;
+    }
+  }
+}

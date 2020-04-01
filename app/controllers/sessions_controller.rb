@@ -37,6 +37,7 @@ class SessionsController < ApplicationController
   
   private
   
+  # Sign up parameters
   def user_params
     params.permit(:first_name, :last_name, :email, :password)
   end
