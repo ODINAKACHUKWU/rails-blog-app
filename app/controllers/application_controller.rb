@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::Base
+  # Modules
+  include RedirectionHandler
+
   # Add flash types for notifications
   add_flash_types :success, :info, :warning, :error, :alert, :notice
 

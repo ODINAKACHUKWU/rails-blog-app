@@ -1,0 +1,55 @@
+<section>
+  <div class="container mt-md-5">
+    <div class="d-flex justify-content-between mb-4 posts-header"> 
+        <div class="article-title"> My Posts </div>
+        <a href="/new-post"> Write a post </a>
+    </div>
+    <div class="container-fluid py-1 mb-1 posts-nav border-bottom">
+        <ul class="nav container d-flex flex-row">
+            <li class="nav-item">
+              <%= link_to "Drafts (#{draft_count})", my_drafts_path , class: "nav-link text-dark posts-tab" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Published (#{published_count})", my_published_path , class: "nav-link text-dark current" %>
+            </li>
+        </ul>
+    </div>
+    <% if @articles.present? %>
+      <% @articles.each do |article| %>
+          <div class="border-bottom post-card">
+              <div class="font-weight-bold pt-3 title">
+                  <%= link_to article.title, my_post_path(article.slug) %>
+              </div>
+              <div class="text-muted content">
+                  <%= sanitize article.content.truncate(40) %>
+              </div>
+              <div class='d-flex text-muted pb-3'>
+                  <small>
+                    Published on <%= format_date(article.published_at) %>
+                  </small>
+                  <small class="ml-1">
+                    <%= format_read_time(article) %>
+                  </small>
+                  <small class="dropdown">
+                    <a class="text-dark" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fa fa-chevron-down ml-2"></i>
+                    </a>
+                    <div class="dropdown-menu draft-link" aria-labelledby="dropdownMenuLink">
+                      <%= link_to "View post", my_post_path(article.slug), class: "dropdown-item" %>
+                      <%= link_to "Edit post", edit_post_path(article.slug), class: "dropdown-item" %>
+                      <%= link_to "Delete post", modal_post_path(article.slug), class: "dropdown-item", data: { :remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window' } %>
+                    </div>
+                    <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content"></div>
+                      </div>
+                    </div>
+                  </small>
+              </div>
+          </div>
+      <% end %>
+    <% else %>
+      <p class="mt-4 d-flex justify-content-center font-italic">You have not published any post yet!</p>
+    <% end %>
+  </div>
+</section>

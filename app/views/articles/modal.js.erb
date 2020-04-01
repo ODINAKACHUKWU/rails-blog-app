@@ -1,0 +1,21 @@
+var options = {
+  'backdrop' : 'static' // Disables closing the modal on clicking the background
+}
+
+// Get 'modal-window' element from document and render the modal partial
+$("#modal-window").find(".modal-content").html("<%= j (render 'modal') %>");
+$("#modal-window").modal(options);
+
+// Styling: Customise the modal
+$("h5").css({"color":"black", "font-size":"1.5rem", "padding":"1rem"})
+$("p").css({"margin-bottom":"0", "padding":"0 1.5rem"})
+$(".modal-header").css({"margin":"auto", "border":"none", "padding":"0"})
+$(".modal-body").css({"margin":"auto", "font-size":"1rem", "padding":"0"})
+$(".modal-footer").css({"margin":"auto", "border":"none", "padding":"0.75rem 0 1.2rem 0"})
+$(".btn-primary").css({"background-color":"#ff7a00", "border-color":"#ff7a00"})
+$(".btn-primary").hover(function(){
+  $(this).css("background-color", "#ff692d");}, function(){
+  $(this).css("background-color", "#ff7a00");
+})
+$(".modal-backdrop").css("opacity", "0.8")
+$(".fa-exclamation-circle").css("color", "red")

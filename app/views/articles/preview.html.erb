@@ -1,0 +1,25 @@
+<section>
+  <div class="container px-5">
+    <ul class="nav mb-3 d-flex justify-content-around posts-header justify-content-md-end mb-5 pt-5">
+        <li class="ml-md-4 btn-nav">
+            <%= link_to "Edit", edit_post_path(@article.slug) %>
+        </li>
+        <li class="ml-md-4 btn-nav">
+            <%= link_to "Publish", publish_post_path(@article.slug), method: :patch %>
+        </li>
+    </ul>
+    <div class="row">
+      <h1 class="article-title pt-4 pb-3">
+        <%= @article.title %>
+      </h1>
+    </div>
+    <div class="row d-flex justify-content-center mb-5">
+      <% if article_image? %>
+        <%= image_tag(article_image, :alt => image_description, :class => "img-fluid") %>
+      <% end %>
+    </div>
+    <div class="article-content px-5 pb-5 mb-5">
+      <%= sanitize @article.content %>
+    </div>
+  </div>
+</section>
