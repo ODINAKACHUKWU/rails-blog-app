@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  # Articles routes
+  # User routes
+  get ':first_name/profile', to: 'users#profile', as: 'profile'
+  get ':first_name/profile/edit', to: 'users#edit', as: 'edit_profile'
+  patch ':first_name/profile/edit', to: 'users#update', as: 'update_profile'
+
+  # Article routes
   get 'new-post', to: 'articles#new'
   post 'new-post', to: 'articles#create'
   get 'me/posts/:slug/edit', to: 'articles#edit', as: 'edit_post'

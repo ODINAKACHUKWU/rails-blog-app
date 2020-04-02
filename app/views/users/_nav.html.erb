@@ -1,0 +1,13 @@
+<div class="container-fluid tab">
+    <ul class="nav container d-flex flex-row">
+        <li class="nav-item">
+            <%= link_to "Posts", profile_path(current_user.first_name), class: "nav-link current" %>
+        </li>
+        <li class="nav-item">
+            <%= link_to "0 Followers", "#", class: "nav-link text-white" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Following 0", "#", class: "nav-link text-white" %>
+        </li>
+    </ul>
+</div>

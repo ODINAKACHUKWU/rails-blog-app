@@ -1,0 +1,56 @@
+<%= render partial: 'profile_header' %>
+<%= render partial: 'nav' %>
+<div class="container">
+  <div class="row py-5 profile-cards">
+        <% if @articles.any? %>
+            <% @articles.each_slice(3) do |article| %>
+                <div class="col-sm-4 mb-4">
+                    <%= link_to my_post_path(article[0].slug) do %>
+                        <div class="card card-col">
+                            <%= image_tag(article[0].image_url.to_s, :alt => "...", :class => "card-img-top") %>
+                            <div class="card-body">
+                            <p class="card-title"><%= sanitize article[0].title %></p>
+                            <p class="card-text"><%= sanitize article[0].content.truncate(30) %></p>
+                            <p>
+                            <small class="text-muted"><%= "#{format_date(article[0].published_at)} #{format_read_time(article[0])}" %></small>
+                            </p>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+                <% if article[1] %>
+                    <div class="col-sm-4 mb-4">
+                        <%= link_to my_post_path(article[1].slug) do %>
+                            <div class="card card-col">
+                                <%= image_tag(article[1].image_url.to_s, :alt => "...", :class => "card-img-top") %>
+                                <div class="card-body">
+                                <h5 class="card-title"><%= sanitize article[1].title %></h5>
+                                <p class="card-text"><%= sanitize article[1].content.truncate(30) %></p>
+                                <p>
+                                <small class="text-muted"><%= "#{format_date(article[1].published_at)} #{format_read_time(article[1])}" %></small>
+                                </p>
+                                </div>
+                            </div>
+                        <% end %>
+                    </div>
+                <% end %>
+                <% if article[2] %>
+                    <div class="col-sm-4 mb-4">
+                        <%= link_to my_post_path(article[2].slug) do %>
+                            <div class="card card-col">
+                                <%= image_tag(article[2].image_url.to_s, :alt => "...", :class => "card-img-top") %>
+                                <div class="card-body">
+                                <h5 class="card-title"><%= sanitize article[2].title %></h5>
+                                <p class="card-text"><%= sanitize article[2].content.truncate(30) %></p>
+                                <p>
+                                <small class="text-muted"><%= "#{format_date(article[2].published_at)} #{format_read_time(article[2])}" %></small>
+                                </p>
+                                </div>
+                            </div>
+                        <% end %>
+                    </div>
+                <% end %>
+            <% end %>
+        <% end %>
+  </div>
+</div>

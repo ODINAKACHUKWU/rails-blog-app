@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   # Callbacks
+  before_action :authenticate
   before_action :get_article, only: [:show, :modal, :publish, :edit, :preview, :update, :destroy]
 
   # GET /new-post
@@ -19,7 +20,7 @@ class ArticlesController < ApplicationController
   # PATCH /me/posts/:slug/edit
   def update
     if @article.update(update_article_params)
-      handle_redirection(@article)
+      article_redirection(@article)
     else
       render :edit
     end
@@ -28,7 +29,7 @@ class ArticlesController < ApplicationController
   # PATCH /me/posts/:slug/publish
   def publish
     if @article.update(published: true, published_at: Time.now)
-      handle_redirection(@article)
+      article_redirection(@article)
     else
       render :preview
     end
@@ -51,7 +52,7 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     if @article.save
-      handle_redirection(@article)
+      article_redirection(@article)
     else
       render :new
     end
@@ -60,7 +61,7 @@ class ArticlesController < ApplicationController
   # DELETE /me/posts/:slug
   def destroy
     @article.destroy
-    handle_redirection(@article)
+    article_redirection(@article)
   end
 
   private
