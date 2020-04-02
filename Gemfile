@@ -42,6 +42,7 @@ gem 'quilljs-rails'
 # Use Carrierwave and Cloudinary for image uploads
 gem 'carrierwave', '~>1.0'
 gem 'cloudinary'
+gem 'mini_magick'
 
 # Use toaster to display notifications
 gem 'toastr-rails'

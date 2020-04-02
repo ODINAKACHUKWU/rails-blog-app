@@ -1,0 +1,24 @@
+<div class="main-section-top profile-header pb-5">
+    <section>
+        <div class="container">
+            <div class="row mx-auto">
+                <div class="col-lg-2">
+                    <% if @user.avatar_url.present? %>
+                        <%= image_tag(avatar(@user), :alt => "avatar image", :class => "rounded-circle", :height => "160") %>
+                    <% else %>
+                        <%= image_tag("avatar.svg", :alt => "avatar image", :class => "rounded-circle", :height => "160") %>
+                    <% end %>
+                </div>
+                <div class="col-lg-10 pl-5">
+                    <h2><%= profile_name(@user) %></h2>
+                    <% if @user.biography %>
+                        <p><%= @user.biography %></p>
+                    <% else %>
+                        <p><i>Add a short biography of yourself to make your profile interesting</i></p>
+                    <% end %>
+                    <%= link_to 'Edit profile', edit_profile_path(@user.first_name), class: "btn btn-lg mt-3 profile-btn" %>
+                </div>                 
+            </div>
+        </div>
+    </section>
+</div>

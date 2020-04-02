@@ -1,3 +1,69 @@
-// Place all the styles related to the users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "base";
+
+.profile-header {
+  background-color: $light-blue;
+}
+
+.container {
+  .profile-cards {
+    a {
+      text-decoration: none;
+      color: $black;
+    }
+  }
+
+  .row {
+    .profile-btn {
+      @include orange-button;
+      background-color: $light-blue;
+    }
+
+    .save-btn {
+      background-color: $ah-orange;
+      color: $white;
+      border: 1px solid $ah-orange;
+    }
+
+    .save-btn:hover {
+      background-color: $btn-hover-orange;
+    }
+
+    .card-col {
+      .card-body {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          font-size: 0.9rem;
+          font-family: hel;
+        }
+        p {
+          margin-bottom: 0rem;
+        }
+        .card-title {
+          font-family: hel;
+          font-size: 1.5rem;
+          font-weight: 600;
+        }
+        .card-text {
+          padding-top: 0.5rem;
+          font-size: 1.3rem;
+        }
+      }
+    }
+  }
+}
+
+.tab {
+  background-color: $ah-blue;
+  .nav {
+    .nav-item {
+      a.current {
+        border-bottom: 2px solid $ah-orange;
+        color: $ah-orange;
+      }
+    }
+  }
+}

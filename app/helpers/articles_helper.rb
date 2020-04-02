@@ -6,7 +6,7 @@ module ArticlesHelper
 
   # Checks whether the active page is edit article page
   def edit_article_page?
-    url_for.include?('edit')
+    url_for.include?('posts') && url_for.include?('edit')
   end
 
   # Check whether the active is published or drafts articles page

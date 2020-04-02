@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   # verify whether a session exits for a user
   def authenticate
     unless current_user
-      redirect_to new_session_path, alert: 'You need to sign in or sign up before continuing.'
+      redirect_to login_path, alert: 'You need to sign in or sign up before continuing.'
     end
   end
 

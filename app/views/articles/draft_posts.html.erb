@@ -7,10 +7,10 @@
     <div class="container-fluid py-1 mb-1 posts-nav border-bottom">
         <ul class="nav container d-flex flex-row">
             <li class="nav-item">
-              <%= link_to "Drafts (#{draft_count})", my_drafts_path , class: "nav-link text-dark posts-tab current" %> 
+              <%= link_to "#{draft_count} Drafts", my_drafts_path , class: "nav-link text-dark posts-tab current" %> 
             </li>
             <li class="nav-item">
-              <%= link_to "Published (#{published_count})", my_published_path , class: "nav-link text-dark" %>
+              <%= link_to "#{published_count} Published", my_published_path , class: "nav-link text-dark" %>
             </li>
         </ul>
     </div>
