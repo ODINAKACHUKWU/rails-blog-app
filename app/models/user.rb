@@ -6,7 +6,11 @@ class User < ApplicationRecord
   mount_uploader :avatar_url, ImageUploader
 
   # Model associations
+  has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_many :articles, dependent: :destroy
+  has_many :followers, class_name: "Follow", foreign_key: :follower_id, dependent: :destroy
+  has_many :followed_authors, class_name: "Follow", foreign_key: :author_id, dependent: :destroy
   
   # Validations
   validates :first_name, presence: true, length: { minimum: 2, too_short: "%{count} characters is the minimum allowed" }, on: :create

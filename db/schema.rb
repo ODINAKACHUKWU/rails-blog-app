@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_29_140241) do
+ActiveRecord::Schema.define(version: 2020_04_02_152823) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,13 +23,40 @@ ActiveRecord::Schema.define(version: 2020_03_29_140241) do
     t.string "image_url"
     t.boolean "published", default: false
     t.datetime "published_at"
-    t.bigint "comment_count", default: 0
-    t.bigint "like_count", default: 0
-    t.bigint "dislike_count", default: 0
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_articles_on_user_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "comment"
+    t.bigint "user_id"
+    t.bigint "article_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_comments_on_article_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "follows", force: :cascade do |t|
+    t.boolean "follow"
+    t.bigint "author_id"
+    t.bigint "follower_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_follows_on_author_id"
+    t.index ["follower_id"], name: "index_follows_on_follower_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.boolean "like"
+    t.bigint "user_id"
+    t.bigint "article_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_likes_on_article_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -49,4 +76,10 @@ ActiveRecord::Schema.define(version: 2020_03_29_140241) do
   end
 
   add_foreign_key "articles", "users"
+  add_foreign_key "comments", "articles"
+  add_foreign_key "comments", "users"
+  add_foreign_key "follows", "users", column: "author_id"
+  add_foreign_key "follows", "users", column: "follower_id"
+  add_foreign_key "likes", "articles"
+  add_foreign_key "likes", "users"
 end
