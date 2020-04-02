@@ -1,6 +1,7 @@
 class Article < ApplicationRecord
   # Model associations
   belongs_to :author, class_name: "User", foreign_key: :user_id
+  has_many :likes, dependent: :destroy
 
   # Mount Image uploader
   mount_uploader :image_url, ImageUploader
