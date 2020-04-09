@@ -12,7 +12,12 @@ class ArticlesController < ApplicationController
   def modal; end
 
   # GET /:first_name/:slug (post_path) || GET /me/:slug (my_post_path)
-  def show; end
+  def show
+    # [todo]: Note that this @articles would be trending articles
+    @articles = Article.published.first(3)
+    @likes = @article.likes.likes.count
+    @dislikes = @article.likes.dislikes.count
+  end
 
   # GET /me/posts/:slug/edit
   def edit; end

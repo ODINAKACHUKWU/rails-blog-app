@@ -15,5 +15,5 @@
     <span class="fa fa-lock"></span>
     <%= form.password_field :password, class: "form-control", placeholder: "Password" %>
   </div>
-  <%= form.submit "Sign Up", class: "form-control btn-orange mt-4" %>
+  <%= form.submit "Sign Up", class: "form-control btn-orange mt-4", data: { "disable-with": "Signing up..." } %>
 <% end %>

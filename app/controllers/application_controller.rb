@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   # Modules
   include RedirectionHandler
+  include Response
 
   # Add flash types for notifications
   add_flash_types :success, :info, :warning, :error, :alert, :notice
@@ -8,6 +9,7 @@ class ApplicationController < ActionController::Base
   # Turn on request forgery protection
   protect_from_forgery with: :exception
     
+  # Helper methods
   helper_method :current_user
 
   protected

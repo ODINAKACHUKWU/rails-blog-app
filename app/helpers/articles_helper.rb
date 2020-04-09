@@ -9,6 +9,11 @@ module ArticlesHelper
     url_for.include?('posts') && url_for.include?('edit')
   end
 
+  # Check whether the active page is article preview page
+  def preview_page?
+    url_for.include?('post') && url_for.include?('preview')
+  end
+
   # Check whether the active is published or drafts articles page
   def show_posts_page?
     url_for == '/me/posts/drafts' || url_for == '/me/posts/published'

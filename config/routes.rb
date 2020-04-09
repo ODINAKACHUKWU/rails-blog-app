@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+  # Like routes
+  get 'posts/:article_id/like/:type', to: 'likes#like', as: 'like'
+
   # User routes
   get ':first_name/profile', to: 'users#profile', as: 'profile'
   get ':first_name/profile/edit', to: 'users#edit', as: 'edit_profile'
@@ -21,11 +24,11 @@ Rails.application.routes.draw do
   get 'me/posts/:slug', to: 'articles#modal', as: 'modal_post'
 
   # Session routes
-  get 'login', to: 'sessions#new'
-  get 'signup', to: 'sessions#new_signup'
-  post 'login', to: 'sessions#signin'
-  post 'signup', to: 'sessions#signup'
-  get 'signout', to: 'sessions#signout'
+  get '/login', to: 'sessions#new'
+  get '/signup', to: 'sessions#new_signup'
+  post '/login', to: 'sessions#signin'
+  post '/signup', to: 'sessions#signup'
+  get '/signout', to: 'sessions#signout'
   
   root 'home#index'
 end

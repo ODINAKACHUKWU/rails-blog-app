@@ -1,3 +1,6 @@
 class HomeController < ApplicationController
-  def index; end
+  # GET /
+  def index
+    @articles = Article.published
+  end
 end
