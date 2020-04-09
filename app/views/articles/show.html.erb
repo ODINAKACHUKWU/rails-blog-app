@@ -5,26 +5,33 @@
         <%= @article.title %>
       </h1>
     </div>
-    <div class='row d-flex mb-4'>
-      <div>
-        <% if author_avatar? %>
-          <%= image_tag(author_avatar, :alt => "avatar", :class => "rounded-circle z-depth-0", :height => "50") %>
-        <% else %>
-          <%= image_tag("avatar.svg", :alt => "avatar", :class => "rounded-circle z-depth-0", :height => "50") %>
-        <% end %>
-      </div>
-      <div class="ml-3">
-        <small class="author">
-          <%= author_full_name %>
-        </small>
+    <div class='row mb-4'>
+      <div class="d-flex">
         <div>
-          <small>
-            <i class="text-muted">Published on</i> <%= format_date(@article.published_at) %>
-          </small>
-          <small class="text-muted">
-            <%= format_read_time(@article) %>
-          </small>
+          <% if author_avatar? %>
+            <%= image_tag(author_avatar, :alt => "avatar", :class => "rounded-circle z-depth-0", :height => "50") %>
+          <% else %>
+            <%= image_tag("avatar.svg", :alt => "avatar", :class => "rounded-circle z-depth-0", :height => "50") %>
+          <% end %>
         </div>
+        <div class="ml-3">
+          <small class="author">
+            <%= author_full_name %>
+          </small>
+          <div>
+            <small>
+              <i class="text-muted">Published on</i> <%= format_date(@article.published_at) %>
+            </small>
+            <small class="text-muted">
+              <%= format_read_time(@article) %>
+            </small>
+          </div>
+        </div>
+      </div>
+      <div>
+        <% unless current_user == @article.author %>
+          <span><%= link_to "Follow", "#" %></span>
+        <% end %>
       </div>
     </div>
     <div class="row mb-5 d-flex justify-content-center">
@@ -34,8 +41,28 @@
     </div>
     <div class="article-content px-5">
       <%= sanitize @article.content %>
+      <% unless @article.author == current_user %>
+        <p class="d-flex justify-content-center">Like this post? Give <span class="font-weight-bold px-1"><%= author_full_name %></span> a credit!</p>
+      <% end %>
     </div>
-    <hr class="my-4">
+    <div class="reaction">
+      <span class="pr-3">
+        <%= link_to like_path(@article.id, "true"), remote: true do %>
+          <span class="like-count"><%= @likes.to_s %></span> <i class="fa fa-thumbs-up mr-1"></i>
+        <% end %>
+      </span>
+      <span class="pr-3">
+        <%= link_to like_path(@article.id, "false"), remote: true do %>
+          <span class="dislike-count"><%= @dislikes.to_s %></span> <i class="fa fa-thumbs-down mr-1"></i>
+        <% end %>
+      </span>
+      <span>
+        <%= link_to "#" do %>
+          102 <i class="fa fa-comments"></i>
+        <% end %>
+      </span>
+    </div>
+    <hr class="mt-2 mb-4">
     <div class='row d-flex mb-4'>
       <div>
         <% if author_avatar? %>
@@ -50,12 +77,75 @@
             <%= author_full_name %>
           </div>
           <p class="text-muted">
-            <% # [TODO]: Style when a biography has been updated %>
             <% if biography? %>
               <%= @article.author.biography %>
             <% end %>
           </p>
         </div>
     </div>
+    <div class="row d-flex justify-content-center">
+      <%= link_to "Write a comment", "#", class: "btn comment-btn" %>
+    </div>
   </div>
+  <% if @articles.any? %>
+    <div class="container-fluid footer-posts py-5 mt-5">
+      <div class="container">
+        <div class="row">
+          <div class="row">
+            <h5 class="mb-5">Trending on Authors Haven</h5>
+          </div>
+          <div class="row">
+              <div class="row">
+                <div class="col-sm-4 mb-4">
+                    <%= link_to post_path(@articles[0].author.first_name, @articles[0].slug) do %>
+                        <div class="card card-col">
+                            <%= image_tag(@articles[0].image_url.to_s, :alt => "...", :class => "card-img-top") %>
+                            <div class="card-body">
+                            <p class="card-title"><%= sanitize @articles[0].title %></p>
+                            <p class="card-text"><%= sanitize @articles[0].content.truncate(30) %></p>
+                            <p>
+                            <small class="text-muted"><%= "#{format_date(@articles[0].published_at)} #{format_read_time(@articles[0])}" %></small>
+                            </p>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+                <% if @articles[1] %>
+                    <div class="col-sm-4 mb-4">
+                        <%= link_to post_path(@articles[1].author.first_name, @articles[1].slug) do %>
+                            <div class="card card-col">
+                                <%= image_tag(@articles[1].image_url.to_s, :alt => "...", :class => "card-img-top") %>
+                                <div class="card-body">
+                                <h5 class="card-title"><%= sanitize @articles[1].title %></h5>
+                                <p class="card-text"><%= sanitize @articles[1].content.truncate(30) %></p>
+                                <p>
+                                <small class="text-muted"><%= "#{format_date(@articles[1].published_at)} #{format_read_time(@articles[1])}" %></small>
+                                </p>
+                                </div>
+                            </div>
+                        <% end %>
+                    </div>
+                <% end %>
+                <% if @articles[2] %>
+                    <div class="col-sm-4 mb-4">
+                        <%= link_to post_path(@articles[2].author.first_name, @articles[2].slug) do %>
+                            <div class="card card-col">
+                                <%= image_tag(@articles[2].image_url.to_s, :alt => "...", :class => "card-img-top") %>
+                                <div class="card-body">
+                                <h5 class="card-title"><%= sanitize @articles[2].title %></h5>
+                                <p class="card-text"><%= sanitize @articles[2].content.truncate(30) %></p>
+                                <p>
+                                <small class="text-muted"><%= "#{format_date(@articles[2].published_at)} #{format_read_time(@articles[2])}" %></small>
+                                </p>
+                                </div>
+                            </div>
+                        <% end %>
+                    </div>
+                <% end %>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </section>

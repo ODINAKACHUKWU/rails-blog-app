@@ -4,8 +4,27 @@
       <div class="row">
         <div class="col-lg-6 order-2 order-lg-1 jumbo-text">
           <% if logged_in? %>
-            <h4>Recent Posts</h4>
-            <% # [TODO]: Articles to be displayed here %>                   
+            <h4 class="pb-3">Recent Posts</h4>
+            <% @articles.first(3).each do |article| %>                   
+              <%= link_to post_path(article.author.first_name, article.slug), class: "card-link" do %>
+                <div class="row d-flex recent-post-card">
+                    <div class="col-4 card-image">
+                      <%= image_tag(article.image_url.to_s, :alt => "...", class: "cover" ) %>
+                    </div>
+                    <div class="col-8 card-content">
+                      <div class="title font-weight-bold">
+                        <%= article.title %>
+                      </div>
+                      <div class="body">
+                        <%= sanitize article.content.truncate(25) %>
+                      </div>
+                      <div>
+                        <small class="text-muted"><%= format_date(article.published_at) %> <%= format_read_time(article) %></small>
+                      </div>
+                    </div>
+                </div>
+              <% end %>
+            <% end %>
           <% else %>
             <h1 class="mt-4">Welcome to Authors Haven</h1>
             <p class="lead">where like-minded authors share inspiration and innovation. If you have thoughts to share that you want to impact or influence people with - beyond just your friends, here is the place!</p>
@@ -13,6 +32,7 @@
           <% end %>
         </div>
         <div class="col-lg-6 order-1 order-lg-2">
+          <h5 class="pb-2 d-flex justify-content-center font-italic text-muted">Stay informed - never miss out!</h5>
           <%= image_tag("jumbo-image.svg", :alt => "hero-image", :class => "img-fluid") %>
         </div>
       </div>
