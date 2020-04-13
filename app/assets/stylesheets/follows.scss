@@ -1,0 +1,21 @@
+@import "base";
+
+.follow-btn-container {
+  a {
+    text-decoration: none !important;
+  }
+
+  .follow-btn,
+  .profile-follow-btn {
+    border: 1px solid $ah-orange;
+    color: $ah-orange;
+    padding: 3px 20px;
+    font-size: 0.9rem;
+    border-radius: 0.5rem;
+  }
+
+  .follow-btn:hover {
+    background-color: $ah-orange;
+    color: $white;
+  }
+}

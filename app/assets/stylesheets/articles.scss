@@ -19,6 +19,10 @@
   }
 }
 
+.author-link:hover {
+  text-decoration: none;
+}
+
 .posts-header {
   a {
     color: $ah-orange;
@@ -35,6 +39,22 @@
   }
 }
 
+.show-article {
+  .img-fluid {
+    width: 100%;
+  }
+}
+
+.card {
+  .card-body {
+    font-family: hel !important;
+    .author-name {
+      font-family: sans-serif;
+      font-size: 0.9rem;
+    }
+  }
+}
+
 .article-content {
   font-size: 1.3rem;
   font-family: hel;
@@ -47,6 +67,13 @@
   h6,
   p {
     font-size: 1.3rem !important;
+  }
+
+  p > img {
+    margin: auto;
+    display: flex;
+    max-width: 80%;
+    height: auto;
   }
 }
 
@@ -180,6 +207,9 @@
       text-decoration: none;
       color: $black;
     }
+  }
+  .card-body {
+    padding: 1rem 0rem;
   }
 }
 

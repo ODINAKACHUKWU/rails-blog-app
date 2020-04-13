@@ -4,10 +4,18 @@ Rails.application.routes.draw do
   # Like routes
   get 'posts/:article_id/like/:type', to: 'likes#like', as: 'like'
 
+  # Follow routes
+  get 'users/:author_id/follow/:follower_id', to: 'follows#follow', as: 'follow'
+
   # User routes
   get ':first_name/profile', to: 'users#profile', as: 'profile'
+  get 'users/:first_name/profile', to: 'users#author_profile', as: 'user_profile'
+  get 'users/:first_name/followers', to: 'users#author_followers', as: 'user_followers'
+  get 'users/:first_name/following', to: 'users#author_following', as: 'user_following'
   get ':first_name/profile/edit', to: 'users#edit', as: 'edit_profile'
   patch ':first_name/profile/edit', to: 'users#update', as: 'update_profile'
+  get ':first_name/followers', to: 'users#followers', as: 'followers'
+  get ':first_name/following', to: 'users#following', as: 'following'
 
   # Article routes
   get 'new-post', to: 'articles#new'

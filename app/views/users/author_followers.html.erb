@@ -1,0 +1,48 @@
+<%= render partial: 'profile_header' %>
+<div class="container-fluid tab">
+    <ul class="nav container d-flex flex-row">
+        <li class="nav-item">
+            <%= link_to "#{@articles.count} Posts", user_profile_path(@user.first_name), class: "nav-link text-white" %>
+        </li>
+        <li class="nav-item">
+            <%= link_to "#{@followers.count} Followers", user_followers_path(@user.first_name), class: "nav-link current" %>
+        </li>
+        <li class="nav-item">
+            <%= link_to "#{@following.count} Following", user_following_path(@user.first_name), class: "nav-link text-white" %>
+        </li>
+    </ul>
+</div>
+<div class="container">
+  <div class="py-5 profile-cards">
+        <% if @followers.any? %>
+            <% @followers.each do |follower| %>
+                <%= link_to sort_link_path(follower) do %>
+                    <div class="profile-card d-flex px-5 py-4 shadow mb-5 bg-white rounded">
+                        <div class="mr-4">
+                            <% if follower.avatar_url.present? %>
+                                <%= image_tag(avatar(follower), :alt => "avatar image", :class => "rounded-circle", :height => "60") %>
+                            <% else %>
+                                <%= image_tag("avatar.svg", :alt => "avatar image", :class => "rounded-circle", :height => "60") %>
+                            <% end %>
+                        </div>
+                        <div>
+                            <div>
+                                <%= profile_name(follower) %>
+                            </div>
+                            <div class="text-muted mb-3">
+                                <% if follower.biography %>
+                                    <%= follower.biography %>
+                                <% end %>
+                            </div>
+                            <div class="follow-btn-container">
+                                <span class="profile-follow-btn"><%= profile_follower_button_text(@follow, follower.id) %></span>
+                            </div>
+                        </div>
+                    </div>
+                <% end %>
+            <% end %>
+        <% else %>
+            <p class="d-flex justify-content-center font-italic"><%= profile_name(@user) %> doesn't have any follower yet!</p>
+        <% end %>
+  </div>
+</div>

@@ -6,4 +6,9 @@ class Like < ApplicationRecord
   # Scopes
   scope :likes, -> { where(like: true) }
   scope :dislikes, -> { where(like: false) }
+
+  # Validations
+  validates :user_id, presence: true
+  validates :article_id, presence: true
+  validates :like, presence: true
 end

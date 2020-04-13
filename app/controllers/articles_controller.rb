@@ -17,6 +17,8 @@ class ArticlesController < ApplicationController
     @articles = Article.published.first(3)
     @likes = @article.likes.likes.count
     @dislikes = @article.likes.dislikes.count
+    @comments = @article.comments.count
+    @follow = @article.author.users_following.where(follower_id: current_user.id)
   end
 
   # GET /me/posts/:slug/edit

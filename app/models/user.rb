@@ -9,9 +9,11 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :articles, dependent: :destroy
-  has_many :followers, class_name: "Follow", foreign_key: :follower_id, dependent: :destroy
-  has_many :followed_authors, class_name: "Follow", foreign_key: :author_id, dependent: :destroy
-  
+  has_many :users_following, class_name: "Follow", foreign_key: :author_id, dependent: :destroy
+  has_many :followed_authors, class_name: "Follow", foreign_key: :follower_id, dependent: :destroy
+  has_many :followings, through: :followed_authors, source: :author
+  has_many :followers, through: :users_following
+
   # Validations
   validates :first_name, presence: true, length: { minimum: 2, too_short: "%{count} characters is the minimum allowed" }, on: :create
   validates :last_name, presence: true, length: { minimum: 2, too_short: "%{count} characters is the minimum allowed" }, on: :create

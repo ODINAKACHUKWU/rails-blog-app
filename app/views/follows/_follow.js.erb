@@ -1,0 +1,9 @@
+var text; // Text to be displayed on the follow button
+
+if (<%= @follow %>) {
+  text = "Following";
+  $(".follow-btn").html(text);
+} else {
+  text = "Follow";
+  $(".follow-btn").html(text);
+}
