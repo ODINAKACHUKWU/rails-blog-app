@@ -1,0 +1,74 @@
+<section id="comment-page">
+    <div class="container pt-4 pb-5">
+        <div class="row">
+            <h6 class="py-4 m-0">Comments for</h6>
+        </div>
+        <div class="row">
+            <div class="comment-card shadow bg-white rounded py-4 px-5">
+                <%= link_to post_path(@article.author.first_name, @article.slug), class: "text-dark" do %>
+                    <div class="font-weight-bold"><%= @article.title %></div>
+                    <div class="text-muted"><small class="mr-1">by</small><%= author_full_name %></div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid pb-5 comment-bottom">
+        <div class="container py-5">
+            <div class="row">
+                <h6 class="pb-3">Comments</h6>
+            </div>
+            <div class="row">
+                <div class="add-comment-section shadow-sm bg-white rounded py-4 px-5">
+                    <div class="d-flex">
+                        <div class="col-1">
+                            <% if current_user.avatar_url %>
+                                <%= image_tag(avatar(current_user), :alt => "avatar image", :class => "rounded-circle", :height => "60") %>
+                            <% else %>
+                                <%= image_tag("avatar.svg", :alt => "avatar image", :class => "rounded-circle", :height => "60") %>
+                            <% end %>
+                        </div>
+                        <div class="col-11">
+                            <div class="font-weight-bold pb-2"><%= profile_name(current_user) %></div>
+                            <div>
+                                <%= form_with(model: @comment, local: true) do |form| %>
+                                    <div class="form-group">
+                                        <%= form.text_field :comment, class: "form-control", placeholder: "Write a comment" %>
+                                    </div>
+                                    <div class="d-flex justify-content-end">
+                                        <%= form.submit "Post", class: "btn btn-post", data: { "disable-with": "Posting..." } %>
+                                    </div>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+        </div>
+        <div class="container">
+            <% if @comments.present? %>
+                <% @comments.each do |comment| %>
+                    <div class="d-flex comment-card mb-3 shadow-sm bg-white rounded py-3 px-4">
+                        <div class="mr-3">
+                            <%= link_to sort_link_path(comment.user) do %>
+                                <% if comment.user.avatar_url %>
+                                    <%= image_tag(avatar(comment.user), :alt => "avatar image", :class => "rounded-circle", :height => "50") %>
+                                <% else %>
+                                    <%= image_tag("avatar.svg", :alt => "avatar image", :class => "rounded-circle", :height => "50") %>
+                                <% end %>
+                            <% end %>
+                        </div>
+                        <div>
+                            <div class="font-weight-bold pb-2"><%= profile_name(comment.user) %></div>
+                            <div>
+                                <%= comment.comment %>
+                            </div>
+                            <div class="text-muted">
+                                <small>Posted on <%= format_date(comment.created_at) %></small>
+                            </div>
+                        </div>
+                    </div>
+                <% end %>
+            <% end %>
+        </div>
+    </div>
+</section>

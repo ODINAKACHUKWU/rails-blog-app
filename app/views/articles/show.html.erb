@@ -61,7 +61,7 @@
         <% end %>
       </span>
       <span>
-        <%= link_to "#" do %>
+        <%= link_to comment_path(@article) do %>
           <span class="comment-count"><%= @comments.to_s %></span> <i class="fa fa-comments"></i>
         <% end %>
       </span>
@@ -92,7 +92,7 @@
       </div>
     </div>
     <div class="row d-flex justify-content-center">
-      <%= link_to "Write a comment", "#", class: "btn comment-btn" %>
+      <%= link_to "Write a comment", comment_path(@article.id), class: "btn comment-btn" %>
     </div>
   </div>
   <% if @articles.any? %>
@@ -129,7 +129,7 @@
                                       <div class="pl-3">
                                         <span class="mr-1"><i class="fa fa-thumbs-up"></i> <%= like_count(@articles[0]) %></span>
                                         <span class="mr-1"><i class="fa fa-thumbs-down"></i> <%= dislike_count(@articles[0]) %></span>
-                                        <span class=""><i class="fa fa-comments"></i> <%= "0" %></span>
+                                        <span class=""><i class="fa fa-comments"></i> <%= comment_count(@articles[0]) %></span>
                                       </div>
                                     </div>
                                   </div>
@@ -165,7 +165,7 @@
                                         <div class="pl-3">
                                           <span class="mr-1"><i class="fa fa-thumbs-up"></i> <%= like_count(@articles[1]) %></span>
                                           <span class="mr-1"><i class="fa fa-thumbs-down"></i> <%= dislike_count(@articles[1]) %></span>
-                                          <span class=""><i class="fa fa-comments"></i> <%= "0" %></span>
+                                          <span class=""><i class="fa fa-comments"></i> <%= comment_count(@articles[1]) %></span>
                                         </div>
                                       </div>
                                     </div>
@@ -202,7 +202,7 @@
                                         <div class="pl-3">
                                           <span class="mr-1"><i class="fa fa-thumbs-up"></i> <%= like_count(@articles[2]) %></span>
                                           <span class="mr-1"><i class="fa fa-thumbs-down"></i> <%= dislike_count(@articles[2]) %></span>
-                                          <span class=""><i class="fa fa-comments"></i> <%= "0" %></span>
+                                          <span class=""><i class="fa fa-comments"></i> <%= comment_count(@articles[2]) %></span>
                                         </div>
                                       </div>
                                     </div>

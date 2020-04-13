@@ -81,7 +81,7 @@ module ArticlesHelper
 
   # Return the total likes of a post
   def like_count(object)
-    if object.likes.likes
+    if object.likes.likes.present?
       object.likes.likes.count.to_s
     else
       "0"
@@ -90,8 +90,17 @@ module ArticlesHelper
 
   # Return the total dislikes of a post
   def dislike_count(object)
-    if object.likes.dislikes
+    if object.likes.dislikes.present?
       object.likes.dislikes.count.to_s
+    else
+      "0"
+    end
+  end
+
+  # Return the total comments on a post
+  def comment_count(object)
+    if object.comments.present?
+      object.comments.count.to_s
     else
       "0"
     end

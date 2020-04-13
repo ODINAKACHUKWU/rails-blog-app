@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+  # Comment routes
+  get 'posts/:article_id/comments/show', to: 'comments#show', as: 'comment'
+  post 'posts/:article_id/comments/show', to: 'comments#create'
+
   # Like routes
   get 'posts/:article_id/like/:type', to: 'likes#like', as: 'like'
 

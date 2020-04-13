@@ -17,7 +17,7 @@
         <% if @followers.any? %>
             <% @followers.each do |follower| %>
                 <%= link_to user_profile_path(follower.first_name) do %>
-                    <div class="profile-card d-flex px-5 py-4 shadow mb-5 bg-white rounded">
+                    <div class="d-flex px-5 py-4 shadow mb-5 bg-white rounded">
                         <div class="mr-4">
                             <% if follower.avatar_url.present? %>
                                 <%= image_tag(avatar(follower), :alt => "avatar image", :class => "rounded-circle", :height => "60") %>
