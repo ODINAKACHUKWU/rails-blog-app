@@ -1,0 +1,37 @@
+@import "base";
+
+.comment-bottom {
+  background-color: $light-blue;
+  min-height: 100%;
+}
+
+#comment-page {
+  height: 100%;
+}
+
+.comment-card {
+  width: 100%;
+  &:hover {
+    a {
+      text-decoration: none;
+    }
+  }
+}
+
+.add-comment-section {
+  width: 100%;
+  .btn-post {
+    color: $white;
+    background-color: $ah-orange;
+    border-color: $ah-orange;
+    &:hover {
+      color: $white;
+      background-color: $btn-hover-orange;
+      border-color: $btn-hover-orange;
+    }
+  }
+}
+
+.comment-card {
+  width: 100%;
+}
