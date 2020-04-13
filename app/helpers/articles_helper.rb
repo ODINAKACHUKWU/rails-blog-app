@@ -78,4 +78,22 @@ module ArticlesHelper
   def biography?
     @article.author.biography.present?
   end
+
+  # Return the total likes of a post
+  def like_count(object)
+    if object.likes.likes
+      object.likes.likes.count.to_s
+    else
+      "0"
+    end
+  end
+
+  # Return the total dislikes of a post
+  def dislike_count(object)
+    if object.likes.dislikes
+      object.likes.dislikes.count.to_s
+    else
+      "0"
+    end
+  end
 end

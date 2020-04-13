@@ -1,0 +1,48 @@
+<%= render partial: 'profile_header' %>
+<div class="container-fluid tab">
+    <ul class="nav container d-flex flex-row">
+        <li class="nav-item">
+            <%= link_to "#{@articles.count} Posts", profile_path(current_user.first_name), class: "nav-link text-white" %>
+        </li>
+        <li class="nav-item">
+            <%= link_to "#{@followers.count} Followers", followers_path(current_user.first_name), class: "nav-link text-white" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "#{@following.count} Following", following_path(current_user.first_name), class: "nav-link current" %>
+        </li>
+    </ul>
+</div>
+<div class="container">
+  <div class="py-5 profile-cards">
+        <% if @following.any? %>
+            <% @following.each do |author| %>
+                <%= link_to user_profile_path(author.first_name) do %>
+                    <div class="profile-card d-flex shadow px-5 py-4 mb-5 bg-white rounded">
+                        <div class="mr-4">
+                            <% if author.avatar_url.present? %>
+                                <%= image_tag(avatar(author), :alt => "avatar image", :class => "rounded-circle", :height => "60") %>
+                            <% else %>
+                                <%= image_tag("avatar.svg", :alt => "avatar image", :class => "rounded-circle", :height => "60") %>
+                            <% end %>
+                        </div>
+                        <div>
+                            <div>
+                                <%= profile_name(author) %>
+                            </div>
+                            <div class="text-muted mb-3">
+                                <% if author.biography %>
+                                    <%= author.biography %>
+                                <% end %>
+                            </div>
+                            <div class="follow-btn-container">
+                                <span class="profile-follow-btn">Following</span>
+                            </div>
+                        </div>
+                    </div>
+                <% end %>
+            <% end %>
+        <% else %>
+            <p class="d-flex justify-content-center font-italic">You are not following any author yet!</p>
+        <% end %>
+  </div>
+</div>

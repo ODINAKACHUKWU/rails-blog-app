@@ -16,8 +16,6 @@ module UsersHelper
 
   # Check whether the active page is profile view page
   def profile_page?
-    if url_for.include?('profile')
-      url_for == "/#{current_user.first_name}/profile"
-    end
+    url_for.include?('profile') || url_for.include?('followers') || url_for.include?('following')
   end
 end
