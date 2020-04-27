@@ -1,2 +1,2 @@
 public/* linguist-vendored
-public/*.html -linguist-vendored
+app/views/* linguist-vendored
