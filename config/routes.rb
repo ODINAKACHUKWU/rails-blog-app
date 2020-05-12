@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   post 'posts/:article_id/comments/show', to: 'comments#create'
 
   # Like routes
-  get 'posts/:article_id/like/:type', to: 'likes#like', as: 'like'
+  get 'posts/:article_id/like', to: 'likes#like', as: 'like'
 
   # Follow routes
   get 'users/:author_id/follow/:follower_id', to: 'follows#follow', as: 'follow'

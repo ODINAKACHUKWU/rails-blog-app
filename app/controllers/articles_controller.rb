@@ -15,9 +15,8 @@ class ArticlesController < ApplicationController
   def show
     # [todo]: Note that this @articles would be trending articles
     @articles = Article.published.first(3)
-    @likes = @article.likes.likes.count
-    @dislikes = @article.likes.dislikes.count
-    @comments = @article.comments.count
+    @likes_count = @article.likes.count
+    @comments_count = @article.comments.count
     @follow = @article.author.users_following.where(follower_id: current_user.id)
   end
 
