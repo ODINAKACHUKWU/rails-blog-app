@@ -40,7 +40,7 @@ gem "font-awesome-rails"
 gem 'quilljs-rails'
 
 # Use Carrierwave and Cloudinary for image uploads
-gem 'carrierwave', '~>1.0'
+gem 'carrierwave', '~>1.3'
 gem 'cloudinary'
 gem 'mini_magick'
 
